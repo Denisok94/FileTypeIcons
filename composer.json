@@ -1,0 +1,19 @@
+{
+    "name": "Denisok94/FileTypeIcons",
+    "type": "yii2-extension",
+    "description": "Yii2 extension for CRUD operations with data structures in relational databases.",
+    "keywords": ["yii2", "FileTypeIcons"],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/Denisok94/FileTypeIcons/issues",
+        "source": "https://github.com/Denisok94/"
+    },
+    "authors": [{
+        "name": "Denisok94",
+        "email": "denisok94@inbox.ru"
+    }],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "rmrevin/yii2-fontawesome": "~2.9"
+    }
+}
