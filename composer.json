@@ -1,7 +1,7 @@
 {
     "name": "Denisok94/FileTypeIcons",
     "type": "yii2-extension",
-    "description": "Yii2 extension for CRUD operations with data structures in relational databases.",
+    "description": "Yii2 extension for the definition of icon by file extension.",
     "keywords": ["yii2", "FileTypeIcons"],
     "license": "BSD-3-Clause",
     "support": {
