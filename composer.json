@@ -1,11 +1,11 @@
 {
-    "name": "Denisok94/FileTypeIcons",
+    "name": "denisok94/file-type-icons",
     "type": "yii2-extension",
     "description": "Yii2 extension for the definition of icon by file extension.",
     "keywords": ["yii2", "FileTypeIcons"],
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/Denisok94/FileTypeIcons/issues",
+        "issues": "https://github.com/Denisok94/file-type-icons/issues",
         "source": "https://github.com/Denisok94/"
     },
     "authors": [{
