@@ -83,10 +83,28 @@ ___
 ### type
 
 ```php
-$example->type('example.xml'); // excel
-$example->type('example.PDF'); // pdf
-$example->type('example.gif'); // image
-$example->type('example.mp3'); // audio
+$type = $example->type('example.xml'); // excel
+$type = $example->type('example.PDF'); // pdf
+$type = $example->type('example.gif'); // image
+$type = $example->type('example.mp3'); // audio
+echo HTML::tag('i', null, ['class' => 'fa fa-' . $type]); // Font Awesome
+```
+or
+```css
+.office>i:before {
+    background-size: 30px 30px;
+    height: 30px;
+    width: 30px;
+}
+.excel:before {
+    display: block;
+    content: ' ';
+    background-image: url('/assets/excel.svg');
+}
+```
+```php
+$type = $example->type('example.xml'); // excel
+echo HTML::tag('div', HTML::tag('i', null, ['class' => $type]), ['class' => 'office']);
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
@@ -94,14 +112,16 @@ ___
 ### fa
 
 ```php
-$example->fa('example.xml'); // file-excel-o
-$example->fa('example.xml', true); // file-excel
-$example->fa('example.PDF'); // file-pdf-o
-$example->fa('example.PDF', true); // file-pdf
-$example->fa('example.gif'); // file-image-o
-$example->fa('example.gif', true); // file-image
-$example->fa('example.mp3'); // file-audio-o
-$example->fa('example.mp3', true); // file-audio
+$fa = $example->fa('example.xml'); // file-excel-o
+$fa_5 = $example->fa('example.xml', true); // file-excel
+$fa = $example->fa('example.PDF'); // file-pdf-o
+$fa_5 = $example->fa('example.PDF', true); // file-pdf
+$fa = $example->fa('example.gif'); // file-image-o
+$fa_5 = $example->fa('example.gif', true); // file-image
+$fa = $example->fa('example.mp3'); // file-audio-o
+$fa_5 = $example->fa('example.mp3', true); // file-audio
+echo HTML::tag('i', null, ['class' => 'fas fa fa-' . $fa]); // Font Awesome 4
+echo HTML::tag('i', null, ['class' => 'fal fa-' . $fa_5])); // Font Awesome 5
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
@@ -120,7 +140,7 @@ ___
 ### svg
 
 ```php
-$svg = $example->full('example.xml'); // <svg>
+$svg = $example->full('example.xml'); // <svg ...></svg>
 echo HTML::tag('div', $svg, ['style' => 'height: 60px; width: 60px;']);
 ```
 ____
