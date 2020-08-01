@@ -79,8 +79,7 @@ $example->ext('example.PDF'); // pdf
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### type
 
 ```php
@@ -91,8 +90,7 @@ $example->type('example.mp3'); // audio
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### fa
 
 ```php
@@ -107,8 +105,7 @@ $example->fa('example.mp3', true); // file-audio
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### full
 
 ```php
@@ -119,8 +116,7 @@ $example->full('example.zip'); // type => archive, ico => archive, ext => zip
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### svg
 
 ```php
@@ -129,8 +125,7 @@ echo HTML::tag('div', $svg, ['style' => 'height: 60px; width: 60px;']);
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### svgBg
 
 ```php
@@ -155,8 +150,7 @@ echo $example->svgBg($svg2, [
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### set
 
 Задать свой лист тегов расширений и/или лист svg
@@ -170,26 +164,45 @@ $f_t = new FTI([
     'video' => [
         'ico' => 'video',
         'ext' =>  ['mp4', 'avi', 'webm', 'mkv', '3gp', 'f4v', 'flv', 'moov', 'mov', 'mpeg', 'mpg'],
+    ]
+],
+[
+    'image' => [
+        'by' => 'author',
+        'svg' => '<svg ...><svg>',
     ],
-]);
+    'video' => [
+        'by' => 'author',
+        'svg' => '<svg ...><svg>',
+    ]
+]); 
 or
 $f_t->set([
     'image' => [
         'ico' => 'image',
         'ext' => ['png', 'jpg', 'jpeg', 'bmp', 'psd', 'icon', 'gif', 'ico', 'svg', 'webp'],
+    ]
+],
+[
+    'image' => [
+        'by' => 'author',
+        'svg' => '<svg ...><svg>',
     ],
+    'video' => [
+        'by' => 'author',
+        'svg' => '<svg ...><svg>',
+    ]
 ]);
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ### get
 
 ```php
 print_r($f_t->get());
 ```
-
+___
 ### return
 
 ```php
@@ -197,7 +210,7 @@ $f_t->return();
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
+___
 ### example
 
 ```php
@@ -205,14 +218,13 @@ echo $test->example();
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
-
+___
 ## Статус 
-
+___
 ### Готово 
-
+___
 ### В работе
-
+___
 ### В планах
 
 ____
