@@ -21,10 +21,5 @@
         "psr-4": {
             "denisok94\\plugin\\": "src/"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "0.4.1": "0.4.1-dev"
-        }
     }
 }
