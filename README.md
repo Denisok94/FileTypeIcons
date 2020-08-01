@@ -62,7 +62,7 @@ ____
 | fa | string $file, bool $pro | Получить название иконки font-awesome |
 | full | string $file | Полная информация, выдаст: тип, исконку, расширение |
 | svg | string $file | svg тег согласно расширению файла |
-| svgBg | string $svg, array|null $options  | Вставить свой svg в background |
+| svgBg | string $svg, array&#124;null $options  | Вставить свой svg в background |
 | set | array $tupe, array $svg | Задать свой лист типов|svg |
 | get |  | Получиьт текущий список типов[0] и svg[1] |
 | return |  | Вернуть родной список типов и svg |
