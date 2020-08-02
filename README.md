@@ -1,15 +1,18 @@
 FileTypeIcons
 ====
 
-Иконка под тип файла.
-Выдаст название иконкии в соответствии с расширению файла.
 Yii2 extension for the definition of icon by file extension.
+
+Выдаст название иконкии или svg по типу файла в соответствии с его расширением.
+
+![https://img.shields.io/badge/license-BSD-green](https://img.shields.io/badge/license-BSD-green) ![https://img.shields.io/badge/downloads-~3Mb-blue](https://img.shields.io/badge/downloads-~3Mb-blue)
 
 ## Оглавление
 
-0. [Установка](#Установка)
-1. [Подключение](#Подключение)
-2. [Функции](#Функции)
+0. [Вступление](#Вступление)
+1. [Установка](#Установка)
+2. [Подключение](#Подключение)
+3. [Функции](#Функции)
     1. [ext](#ext)
     2. [type](#type)
     3. [fa](#fa)
@@ -20,12 +23,24 @@ Yii2 extension for the definition of icon by file extension.
     8. [get](#get)
     9. [return](#return)
     10. [example](#example)
-3. [Статус](#Статус)
+4. [Статус](#Статус)
     1. [Готово](#Готово)
     2. [В работе](#В-работе)
     3. [В планах](#В-планах)
+5. [Обновления](#Обновления)
 
 
+## Вступление
+
+- Плагин не претендует на идеальность и единственно верным решением текущей задачи.
+- Список типов файлов согласно их расширению составлен по мнению автора. Если он вас не устраивает, реализована возможность его замена. 
+- Иконки взяты с сайта [icon-icons.com](https://icon-icons.com/)
+- в планах реализовать выдачу svg согласно расширению файла.
+- Я не буду против, если Вы предложите свой вариант типов и/или пак svg иконок.
+
+____
+[:arrow_up:Оглавление](#Оглавление)
+___
 ## Установка
 
 Run:
@@ -43,7 +58,7 @@ to the require section of your composer.json file.
 
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
+___
 ## Подключение
 
 ```php
@@ -52,7 +67,7 @@ $example = new FTI();
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
+___
 ## Функции
 
 | Имя | Параметры | Описание |
@@ -70,26 +85,49 @@ ____
 
 ____
 [:arrow_up:Оглавление](#Оглавление)
-
+___
 ### ext
+
+Получить расширение файла. Результат будет с нижним регистром, можно использовать для своих нуждах.
 
 ```php
 $example->ext('example.xml'); // xml
 $example->ext('example.PDF'); // pdf
+```
+Или использовать для своих иконок
+```css
+.my-ico>i:before {
+    background-size: 30px 30px;
+    height: 30px;
+    width: 30px;
+}
+.xml:before {
+    display: block;
+    content: ' ';
+    background-image: url('/assets/xml.svg');
+}
+```
+```php
+$ext = $example->ext('example.xml'); // xml
+echo HTML::tag('div', HTML::tag('i', null, ['class' => $ext]), ['class' => 'my-ico']);
 ```
 ____
 [:arrow_up:Оглавление](#Оглавление)
 ___
 ### type
 
+Узнать к какому типу относится файл, также можно использовать для иконки FA.
+
 ```php
+$type = $example->type('example.swf'); // file
+$type = $example->type('example.JPG'); // image
+$type = $example->type('example.rar'); // archive
 $type = $example->type('example.xml'); // excel
-$type = $example->type('example.PDF'); // pdf
-$type = $example->type('example.gif'); // image
-$type = $example->type('example.mp3'); // audio
 echo HTML::tag('i', null, ['class' => 'fa fa-' . $type]); // Font Awesome
 ```
-or
+
+Или, можно создать свою svg иконку под определённый тип, и обернуть в div
+
 ```css
 .office>i:before {
     background-size: 30px 30px;
@@ -111,6 +149,8 @@ ____
 ___
 ### fa
 
+Получить название иконки для Font Awesome 4/5
+
 ```php
 $fa = $example->fa('example.xml'); // file-excel-o
 $fa_5 = $example->fa('example.xml', true); // file-excel
@@ -128,6 +168,8 @@ ____
 ___
 ### full
 
+Получить "полную" информацию о файле, в рамках плагина
+
 ```php
 $example->full('example.xml'); // type => excel, ico => excel, ext => xml
 $example->full('example.PDF'); // type => pdf, ico => pdf, ext => pdf
@@ -139,6 +181,8 @@ ____
 ___
 ### svg
 
+Получить svg иконку согласно типу файлу
+
 ```php
 $svg = $example->full('example.xml'); // <svg ...></svg>
 echo HTML::tag('div', $svg, ['style' => 'height: 60px; width: 60px;']);
@@ -147,6 +191,8 @@ ____
 [:arrow_up:Оглавление](#Оглавление)
 ___
 ### svgBg
+
+Вставить свою svg иконку на фон
 
 ```php
 svgBg($svg, $options = []);
@@ -173,9 +219,10 @@ ____
 ___
 ### set
 
-Задать свой лист тегов расширений и/или лист svg
+Задать свой лист типов расширений и/или лист svg
 
 ```php
+$f_t = new FTI(Лист типов, Лист svg);
 $f_t = new FTI([
     'image' => [
         'ico' => 'image',
@@ -197,6 +244,7 @@ $f_t = new FTI([
     ]
 ]); 
 or
+$f_t->set(Лист типов, Лист svg);
 $f_t->set([
     'image' => [
         'ico' => 'image',
@@ -207,10 +255,6 @@ $f_t->set([
     'image' => [
         'by' => 'author',
         'svg' => '<svg ...><svg>',
-    ],
-    'video' => [
-        'by' => 'author',
-        'svg' => '<svg ...><svg>',
     ]
 ]);
 ```
@@ -219,11 +263,15 @@ ____
 ___
 ### get
 
+Получиьт текущий список типов[0] и svg[1] 
+
 ```php
 print_r($f_t->get());
 ```
 ___
 ### return
+
+Вернуть родной список типов и svg 
 
 ```php
 $f_t->return();
@@ -233,6 +281,8 @@ ____
 ___
 ### example
 
+Показать пример работы плагина `FileTypeIcons`. Выдаст таблицу с примерами
+
 ```php
 echo $test->example();
 ```
@@ -240,12 +290,42 @@ ____
 [:arrow_up:Оглавление](#Оглавление)
 ___
 ## Статус 
+
 ___
 ### Готово 
 ___
 ### В работе
+
+- Расширение списка типов файлов
+- Расширение списка svg иконок типов
 ___
 ### В планах
 
+- svg иконка согласно расширению файла
+____
+[:arrow_up:Оглавление](#Оглавление)
+
+
+___
+## Обновления 
+
+0. [v0.6.3](#Update-to-v0.6.3)
+1. [<v0.6.2](#Update-to-<v0.6.2)
+____
+[:arrow_up:Оглавление](#Оглавление)
+___
+### Update to v0.6.3
+
+| 1 | 2 | 
+|:----------------|:---------|
+| composer.json | `"suggest": {"rmrevin/yii2-fontawesome": "~2.9 → ~3.0"}` | 
+| README | - | 
+
+____
+[:arrow_up:Оглавление](#Оглавление)
+___
+### Update to <v0.6.2
+
+куча правок с разбирательством, как оно работает =)
 ____
 [:arrow_up:Оглавление](#Оглавление)
