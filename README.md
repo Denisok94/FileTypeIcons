@@ -48,13 +48,14 @@ Run:
 php composer.phar require --prefer-dist denisok94/file-type-icons
 ```
 
-or add
+or add to the `require` section of your `composer.json` file:
 
 ```json
 "denisok94/file-type-icons": "*"
 ```
-
-to the require section of your composer.json file.
+```
+composer update
+```
 
 ____
 [:arrow_up:Оглавление](#Оглавление)
@@ -88,7 +89,7 @@ ____
 ___
 ### ext
 
-Получить расширение файла. Результат будет с нижним регистром, можно использовать для своих нуждах.
+Получить расширение файла. Результат будет с нижним регистром, можно использовать в своих нуждах.
 
 ```php
 $example->ext('example.xml'); // xml
@@ -109,6 +110,7 @@ $example->ext('example.PDF'); // pdf
 ```
 ```php
 $ext = $example->ext('example.xml'); // xml
+use yii\helpers\Html;
 echo HTML::tag('div', HTML::tag('i', null, ['class' => $ext]), ['class' => 'my-ico']);
 ```
 ____
@@ -184,7 +186,7 @@ ___
 Получить svg иконку согласно типу файлу
 
 ```php
-$svg = $example->full('example.xml'); // <svg ...></svg>
+$svg = $example->svg('example.xml'); // <svg ...></svg>
 echo HTML::tag('div', $svg, ['style' => 'height: 60px; width: 60px;']);
 ```
 ____
@@ -196,7 +198,13 @@ ___
 
 ```php
 svgBg($svg, $options = []);
-$options = ['style' => array|string,'class' => string,'tag' => string,'id' => string,'txt' => string];
+$options = [
+    'style' => array|string,
+    'class' => string,
+    'tag' => string,
+    'id' => string,
+    'txt' => string
+];
 
 $svg1 = '/svg/excel.svg';
 echo $example->svgBg($svg1, [
@@ -309,8 +317,20 @@ ____
 ___
 ## Обновления 
 
-0. [v0.6.3](#update-to-v063)
-1. [<v0.6.2](#update-to-v062)
+0. [v0.6.4](#update-to-v064)
+1. [v0.6.3](#update-to-v063)
+2. [<v0.6.2](#update-to-v062)
+____
+[:arrow_up:Оглавление](#Оглавление)
+___
+### Update to v0.6.4
+
+| где | что | 
+|:----------------|:---------|
+| плагин | исправление ошибок и оптимизация | 
+| tupe_list | in audio add aac, in archive add gzip, in html add 'htm', 'mht'
+| README | исправление ошибок | 
+
 ____
 [:arrow_up:Оглавление](#Оглавление)
 ___

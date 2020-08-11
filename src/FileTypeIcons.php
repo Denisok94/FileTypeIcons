@@ -21,9 +21,6 @@ use yii\helpers\Html;
  */
 class FileTypeIcons
 {
-    /**
-     * by John Gardner (https://icon-icons.com/pack/File/2148)
-     */
     private static $svg_list = [
         'file' => [
             'by' => 'John Gardner (https://icon-icons.com/pack/File/2148)',
@@ -103,7 +100,7 @@ class FileTypeIcons
         ],
         'audio' =>  [
             'ico' => 'audio',
-            'ext' => ['mp3', 'mpa', 'weba', 'wav', 'wma', 'wave', 'ogg', 'm4a', 'mid', 'midi'],
+            'ext' => ['mp3', 'mpa', 'weba', 'wav', 'wma', 'wave', 'ogg', 'm4a', 'mid', 'midi', 'aac'],
         ],
         'word' => [
             'ico' => 'word',
@@ -119,7 +116,7 @@ class FileTypeIcons
         ],
         'archive' => [
             'ico' => 'archive',
-            'ext' =>  ['zip', 'rar', '7z'],
+            'ext' =>  ['zip', 'rar', '7z', 'gzip'],
         ],
         'js' => [
             'ico' => 'code',
@@ -135,7 +132,7 @@ class FileTypeIcons
         ],
         'html' => [
             'ico' => 'code',
-            'ext' =>  ['html'],
+            'ext' =>  ['html', 'htm', 'mht'],
         ],
         'python' => [
             'ico' => 'code',
@@ -169,7 +166,7 @@ class FileTypeIcons
         $fname = basename($file); // берём имя файла (name.ext)
         $filetupe = pathinfo($fname); // берём о нём инфу 
         $filename = $filetupe['filename']; // filename - имя файла
-        $extension = $filetupe['extension']; // extension - расширение файла
+        $extension = isset($filetupe['extension']) ? $filetupe['extension'] : ''; // extension - расширение файла
         return strtolower($extension); // нижний регистр (PNG → png)
     }
 
@@ -178,6 +175,7 @@ class FileTypeIcons
      */
     private static function search($ext)
     {
+        if (!self::$extensions) self::$extensions = self::$tupe_list;
         foreach (self::$extensions as $key => $value) {
             $index = array_search($ext, $value['ext']);
             if ($index !== FALSE) return [$key, $value['ico']];
@@ -194,14 +192,13 @@ class FileTypeIcons
      * $file = 'name.ext';
      * 
      * $fa = FileTypeIcons::fa($file);
-     * 
-     * &#60;i class="fa fa-$fa">&#60;/i>
+     * return &#60;i class="fa fa-$fa">&#60;/i>
      */
     public static function fa($file, $pro = false)
     {
         $ext = self::ext($file); // расширение файла
         $fa = 'file'; // базавая иконка
-        $search = self::search($ext);
+        $search = $ext ? self::search($ext) : false;
         if ($search) $fa = $search[1];
         return (($fa != 'file') ? ('file-' . $fa) : ($fa)) . ((!$pro) ? ('-o') : (''));
     }
@@ -215,7 +212,7 @@ class FileTypeIcons
     {
         $ext = self::ext($file);  // расширение файла
         $type = 'file'; // базавая информация
-        $search = self::search($ext);
+        $search = $ext ? self::search($ext) : false;
         if ($search) $type = $search[0];
         return $type;
     }
@@ -235,7 +232,7 @@ class FileTypeIcons
             'ico' => 'file',
             'ext' => $ext,
         ];
-        $search = self::search($ext);
+        $search = $ext ? self::search($ext) : false;
         if ($search) {
             $row['ico'] = $search[1];
             $row['type'] = $search[0];
@@ -251,9 +248,10 @@ class FileTypeIcons
     public static function svg($file)
     {
         $ext = self::ext($file);  // расширение файла
+        if (!self::$extsvg) self::$extsvg = self::$svg_list;
         $type = 'file'; // базавая информация
         $svg = ''; // 
-        $search = self::search($ext);
+        $search = $ext ? self::search($ext) : false;
         if ($search) {
             $type = $search[0];
             if (isset(self::$extsvg[$type])) $svg = self::$extsvg[$type]['svg'];
@@ -359,7 +357,7 @@ class FileTypeIcons
         self::$extsvg = self::$svg_list;
     }
 
-
+    // --------------------------------------------------------------
 
     /**
      * Пример работы FileTypeIcons 
@@ -427,9 +425,11 @@ class FileTypeIcons
             "example.svg",
             "example.rar",
             "example.7z",
+            "example.gzip",
             "example.css",
             "example.js",
             "example.html",
+            "example.htm",
             "example.py",
             "example.php",
             "example.swf",
@@ -479,5 +479,5 @@ class FileTypeIcons
         }
         $echo .=  '</table>';
         return $echo;
-    }
+    } // end example
 }
