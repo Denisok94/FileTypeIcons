@@ -3,7 +3,7 @@ FileTypeIcons
 
 Yii2 extension for the definition of icon by file extension.
 
-Выдаст название иконкии или svg по типу файла в соответствии с его расширением.
+Выдаст название иконки или svg, по типу файла в соответствии с его расширением.
 
 ![https://img.shields.io/badge/license-BSD-green](https://img.shields.io/badge/license-BSD-green) ![https://img.shields.io/badge/downloads-~3Mb-blue](https://img.shields.io/badge/downloads-~3Mb-blue)
 
