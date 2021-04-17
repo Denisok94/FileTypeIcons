@@ -13,6 +13,7 @@
         "email": "denisok94@inbox.ru",
         "homepage": "https://s-denis.ru/git/file-type-icons"
     }],
+    "minimum-stability": "dev",
     "require": {
         "yiisoft/yii2": "~2.0.0"
     },
@@ -22,6 +23,11 @@
     "autoload": {
         "psr-4": {
             "denisok94\\plugin\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "v0.6.4-dev"
         }
     }
 }

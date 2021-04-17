@@ -316,12 +316,14 @@ ____
 
 ___
 ## Обновления 
+___
+### Update to v0.6.5
 
-0. [v0.6.4](#update-to-v064)
-1. [v0.6.3](#update-to-v063)
-2. [<v0.6.2](#update-to-v062)
-____
-[:arrow_up:Оглавление](#Оглавление)
+| где | что | 
+|:----------------|:---------|
+| плагин | svg вынесены в отдельный класс | 
+| README | исправление ошибок | 
+
 ___
 ### Update to v0.6.4
 
@@ -331,8 +333,6 @@ ___
 | tupe_list | in audio add aac, in archive add gzip, in html add 'htm', 'mht'
 | README | исправление ошибок | 
 
-____
-[:arrow_up:Оглавление](#Оглавление)
 ___
 ### Update to v0.6.3
 
@@ -341,8 +341,6 @@ ___
 | composer.json | `"suggest": {"rmrevin/yii2-fontawesome": "~2.9 → ~3.0"}` | 
 | README | - | 
 
-____
-[:arrow_up:Оглавление](#Оглавление)
 ___
 ### Update to <v0.6.2
 
