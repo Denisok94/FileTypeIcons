@@ -2,7 +2,7 @@
     "name": "denisok94/file-type-icons",
     "type": "yii2-extension",
     "description": "Yii2 extension for the definition of icon by file extension.",
-    "keywords": ["yii2", "Yii2 extension", "FileTypeIcons", "file", "type", "extension", "icons"],
+    "keywords": [],
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/Denisok94/file-type-icons/issues",
@@ -10,8 +10,7 @@
     },
     "authors": [{
         "name": "Denisok94",
-        "email": "denisok94@inbox.ru",
-        "homepage": "https://s-denis.ru/git/file-type-icons"
+        "email": "denisok94@inbox.ru"
     }],
     "minimum-stability": "dev",
     "require": {
@@ -27,7 +26,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "v0.6.5-dev"
+            "dev-master": "v0.6.5.1-dev"
         }
     }
 }
